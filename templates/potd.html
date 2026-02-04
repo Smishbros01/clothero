@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>
+		Clothero Closet Laundry Settings
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylespages.css') }}">
+</head>
+
+<main>
+	<h1>
+		Edit Your Unique Piece settings
+	</h1>
+{% if potd %}
+	{% if sections %}
+		{% for section in sections %}
+<div class="secrow">
+<h2 class="title"> {{section}}</h2>
+{% if section in potdsections %}
+<form method="POST" action="/settings/potd" style="display:inline;">
+<input type="hidden" name="section" value="{{section}}-DONTPOTD"> 
+<button type="submit" class="addbtn">
+Remove
+</button>
+	</form>
+{% else %}
+<form method="POST" action="/settings/potd" style="display:inline;">
+<input type="hidden" name="section" value="{{section}}-POTD"> 
+<button type="submit" class="addbtn">
+ADD
+</button>
+	</form>
+{% endif %}
+
+</div>		
+
+		{% endfor %}
+
+<div class="secrow">
+<h2 class="title"> Favorites</h2>
+{% if favorites in potdsections %}
+<form method="POST" action="/settings/potd" style="display:inline;">
+<input type="hidden" name="section" value="favorites-DONTPOTD"> 
+<button type="submit" class="addbtn">
+Remove
+</button>
+	</form>
+{% else %}
+<form method="POST" action="/settings/potd" style="display:inline;">
+<input type="hidden" name="section" value="favorites-POTD"> 
+<button type="submit" class="addbtn">
+ADD
+</button>
+	</form>
+{% endif %}
+
+</div>	
+
+<p class="notif"> "Adding" allows clothes in these sections to show up as a "Unique Piece" on launch. "Removing" removes that feature, all clothes by default have this feature (until you touch any of these settings). </p>
+	{% else %}
+	<h2>
+		Your closet has no sections yet.
+	</h2>
+	{% endif %}
+<div class="secrow">
+<form method="POST" action="/settings/potd" style="display:inline;">
+<input type="hidden" name="section" value="random-NOPOTD"> 
+<button type="submit" class="addbtn">
+Turn off
+</button>
+	</form>
+</div>
+
+{% else %}
+<div class="secrow">
+<form method="POST" action="/settings/potd" style="display:inline;">
+<input type="hidden" name="section" value="random-YESPOTD"> 
+<button type="submit" class="addbtn">
+Turn on
+</button>
+	</form>
+</div>
+
+<p class="notif"> "Unique Piece" is currently off! Meaning no Unique Piece will show on launch. </p>
+{% endif %}
+	<p>
+		Go somewhere else
+	</p>
+<div class="secrow">
+	<a href="/settings" class="button end">Settings</a>
+	<a href="/" class="button end">Home</a>
+</div>
+<div class="secrow">
+	<a href="/gen" class="button end">Generate Outfit </a>
+	<a href="/closet" class="button end">Closet</a>
+</div>
+<div class="secrow">
+	<a href="/laundry" class="button end">Laundry</a>
+	<a href="/search" class="button end">Search</a>
+</div>
+</main>
+{% endblock %}

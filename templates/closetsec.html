@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>
+		Clothero Closet
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylespages.css') }}">
+</head>
+
+<main>
+	<h1>
+		"{{section}}" Section
+	</h1>
+	{% if pieces %}
+		<ul>
+			{% for piece, items in pieces.items() %}
+				<li class="title">{{piece}}
+					{% if items %}
+						<ul>
+							{% for pid, traits in items.items() %}
+								<li class="writing">
+{% if traits[4] %}
+<form method="POST" action="/closet/{{section}}/unfavorite-piece/{{pid}}" style="display:inline;">
+										<button type="submit" class="star">
+											★
+										</button>
+									</form>
+
+{% else %}
+<form method="POST" action="/closet/{{section}}/favorite-piece/{{pid}}" style="display:inline;">
+										<button type="submit" class="star">
+											☆
+										</button>
+									</form>
+{% endif %}
+ ID: {{pid}} | Color: {{traits[0]}} | Material: {{traits[1]}} | Professionalism: {{traits[2]}}
+									<form method="POST" action="/closet/{{section}}/remove-piece/{{pid}}" style="display:inline;">
+										<button type="submit" class="remove">
+											X
+										</button>
+									</form>
+								</li>
+								<img src="/static/clothes/{{traits[3]}}" width="400">
+							{% endfor %}
+						</ul>
+					{% else %}
+						<li class="writing">
+							All clothes are dirty!
+						</li>
+
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<h2>
+			No clothing items in this section yet.
+		</h2>
+	{% endif %}
+
+	<form method="POST" action="/closet/{{section}}/add-piece"class="addform">
+		<input type="hidden" name="section" value="{{section}}"class="addinp">
+		<input type="text" name="piecename" placeholder="Piece Name" required class="addinp">
+		<input type="text" name="color" placeholder="Color" required class="addinp">
+		<input type="text" name="material" placeholder="Material" required class="addinp">
+		<input type="text" name="professionalism" placeholder="Professionalism" required class="addinp">
+		<input type="text" name="image" placeholder="Image filename" class="addinp">
+		<button type="submit" class="addbtn" >
+			Add
+		</button>
+	</form>
+	<h2 class="notif">
+		Add images to /static/clothes and make sure to type the extension (.jpg, .png...)
+	</h2>
+
+	<p>
+		Go somewhere else	
+	</p>
+<div class="secrow">
+	<a href="/closet" class="button end">Closet</a>
+	<a href="/" class="button end">Home</a>
+</div>
+<div class="secrow">
+	<a href="/gen" class="button end">Generate Outfit </a>
+	<a href="/laundry" class="button end">Laundry</a>
+</div>
+<div class="secrow">
+	<a href="/search" class="button end">Search</a>
+	<a href="/settings" class="button end">Settings</a>
+</div>
+{% endblock %}

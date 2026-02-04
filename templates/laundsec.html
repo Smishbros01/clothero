@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>
+		Clothero Closet Laundry Settings
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylespages.css') }}">
+</head>
+
+<main>
+	<h1>
+		Edit Your "{{section}}" Laundry Settings
+	</h1>
+	{% if pieces %}
+		{% for piece in pieces %}
+			<div class="secrow">
+{% if piece in nowashpiece %}
+				<form method="GET" action="/settings/laundry/{{section}}" style="display:inline;">
+		<button type="submit" class="button" onclick="return confirm('Cannot access contents because laundry setting is set to No Wash (Change the setting to Wash in order to access contents).')">
+{{piece}}
+		</button>
+
+	</form>
+	<form method="POST" action="/settings/laundry/{{section}}" style="display:inline;">
+<input type="hidden" name="piece" value="{{piece}}-Wash"> 
+<button type="submit" class="addbtn">
+Remove
+</button>
+	</form>
+{% else %} 
+<form method="GET" action="/settings/laundry/{{section}}/{{piece}}" style="display:inline;">
+		<button type="submit" class="button">
+{{piece}}
+		</button>
+	</form>
+<form method="POST" action="/settings/laundry/{{section}}" style="display:inline;">
+<input type="hidden" name="piece" value="{{piece}}-NoWash"> 
+<button type="submit" class="addbtn">
+Add
+</button>
+	</form>
+{% endif %} 		
+	</div>
+
+		{% endfor %}
+<p class="notif"> "Adding" keeps all the clothes in that piece in circulation after they have been generated. "Removing" removes that feature, all clothes by default don't have that feature. </p>
+	{% else %}
+	<h2>
+		Your closet has no pieces yet.
+	</h2>
+	{% endif %}
+	<p>
+		Go somewhere else
+	</p>
+<div class="secrow">
+	<a href="/settings" class="button end">Settings</a>
+	<a href="/" class="button end">Home</a>
+</div>
+<div class="secrow">
+	<a href="/gen" class="button end">Generate Outfit </a>
+	<a href="/closet" class="button end">Closet</a>
+</div>
+<div class="secrow">
+	<a href="/laundry" class="button end">Laundry</a>
+	<a href="/search" class="button end">Search</a>
+</div>
+</main>
+{% endblock %}

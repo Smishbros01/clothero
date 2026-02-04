@@ -1,0 +1,5 @@
+**⚠️ NOTE: This is a legacy project. This was developed as an introductory Python college project. It is no longer actively maintained and serves as a record of my early development journey. For examples of my current technical standards, please see my [Blackjack Monte Carlo Simulator].
+
+Hello and welcome to Clothero! Here are some quick project requirements:
+
+- flask

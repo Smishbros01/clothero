@@ -1,0 +1,292 @@
+@font-face{
+	font-family: "Adelia"; 
+	src: url("/static/fonts/ADELIA.otf") format("truetype");
+}
+
+@font-face{
+	font-family: "lazys"; 
+	src: url("/static/fonts/LazyFight.otf") format("truetype");
+}
+
+@font-face{
+	font-family: "notes"; 
+	src: url("/static/fonts/CuteNotes.ttf") format("truetype");
+}
+
+@font-face{
+	font-family: "draft"; 
+	src: url("/static/fonts/Final Draft.otf") format("truetype");
+}
+
+.secrow{
+	display:block;
+	text-align: center;
+	margin-bottom: 10px
+}
+
+
+.button{
+	display: inline-block;
+	width: 400px;
+	padding: 10px 20px;
+	background-color: #D8D2C2; 
+	color: #5F8B4C;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 20px;
+	border: none;
+	text-align: center;
+	font-size: 30px;
+	cursor: pointer; 
+}
+
+.button:hover{
+    background-color: #4B5945;
+}
+
+.remove{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background-color: transparent; 
+	color: #ff2c2c;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 5px;
+	text-align: center;
+	font-size: 20px;
+	border: none;
+	cursor: pointer; 
+}
+
+.remove:hover{
+	background-color: #f69697;
+}
+
+.star{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-color: transparent; 
+	color: #FADA5E;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 30px;
+	text-align: center;
+	font-size: 30px;
+	border: none;
+	cursor: pointer; 
+	font-weight: bold;
+}
+
+.star:hover{
+	background-color: #FCF4A3;
+}
+.favorites{
+	background-color: #FFF4BC; 
+	color: #FFDC2E;
+
+}
+
+.favorites:hover{
+	background-color: #C9BB8E;
+}
+
+.hyp{
+	background-color: transparent; 
+	padding: 10px 10px;
+	color: #90683b;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 30px;
+	border: none;
+	text-align: center;
+	font-size: 30px;
+	cursor: pointer; 
+}
+
+.hyp:hover{
+	background-color: #BFAD8D; 
+}
+.clean{
+	display: inline-block;
+	width: 60px;
+	height: 30px;
+	background-color: #9DC183; 
+	color: #5F8B4C;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 5px;
+	text-align: center;
+	font-size: 16px;
+	border: none;
+	cursor: pointer; 
+}
+
+.clean:hover{
+	background-color: #D0F0C0;
+}
+
+.all{
+	display: block;
+	margin: 20px auto;
+	width: 100px;
+}
+
+
+.addform{
+	text-align: center;
+	margin-top: 10px
+}
+
+.addbtn{
+	width: 150px;
+	padding: 5px 10px;
+	background-color: #D8D2C2; 
+	color: #5F8B4C;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 10px;
+	text-align: center;
+	font-size: 20px;
+	border: none;
+	cursor: pointer; 
+}
+.confirm{
+	font-size: 20px;
+}
+
+.addbtn:hover{
+    background-color: #4B5945;
+}
+
+.addinp{
+	width: 150px;
+	padding: 10px 20px;
+	background-color: #D8D2C2; 
+	color: #5F8B4C;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 10px;
+	text-align: center;
+	font-size: 15px;
+	border: none;
+	cursor: pointer; 
+}
+
+.settings{
+	display: block;
+	margin: 20px auto;
+	width: 200px;
+	font-size: 15px;
+}
+.end{
+	width: 200px;
+	font-size: 20px;
+	border-radius: 10px;
+}
+
+.title{
+	margin-top:10px;
+	color: #49321c;
+	font-size: 50px;
+	font-family: draft;
+}
+
+.writing{
+	margin-top:10px;
+	color: #90683b;
+	font-size: 30px;
+	font-family: lazys;
+}
+
+.notif{
+	margin-top:1px;
+	color: #27548A;
+	font-size: 20px;
+	font-family: draft;
+	text-align: center;
+}
+
+body{
+	background-color: #F6F1DE;
+}
+
+h1{	
+	color: #27548A;
+	font-family: adelia;
+	font-size: 80px;
+	text-align: center;
+	margin-bottom: 100px;
+}
+
+h2{
+	margin-top:100px;
+	color: #CC7229;
+	font-size: 60px;
+	font-family: lazys;
+	text-align: center;
+}
+
+p{
+	margin-top:100px;
+	color: #3C552D;
+	font-size: 40px;
+	font-family: lazys;
+	text-align: center;
+}
+
+small{
+        color: #27548A;
+	font-size: 30px;
+	font-family: notes;
+}
+
+.container input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  cursor: pointer;
+  position: relative;
+  padding-left: 10px;
+  user-select: none;
+  font-size: 16px;
+}
+.checkmark {
+  position: absolute;
+  right: 25px;
+  height: 30px;
+  width: 30px;
+  background-color: #D8D2C2;
+  border-radius: 6px;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #3C552D;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+  left: 10px;
+  top: 5px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+}

@@ -1,0 +1,145 @@
+@font-face{
+	font-family: "Adelia"; 
+	src: url("/static/fonts/ADELIA.otf") format("truetype");
+}
+
+@font-face{
+	font-family: "notes"; 
+	src: url("/static/fonts/CuteNotes.ttf") format("truetype");
+}
+
+@font-face{
+	font-family: "lazys"; 
+	src: url("/static/fonts/LazyFight.otf") format("truetype");
+}
+
+@font-face{
+	font-family: "draft"; 
+	src: url("/static/fonts/Final Draft.otf") format("truetype");
+}
+
+.secrow{
+margin-top: 1px
+	display:block;
+	text-align: center;
+	margin-bottom: 10px
+}
+
+.button{
+	display: inline-block;
+	width: 400px;
+	padding: 10px 20px;
+	background-color: #D8D2C2; 
+	color: #5F8B4C;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 20px;
+	border: none;
+	text-align: center;
+	font-size: 30px;
+	cursor: pointer; 
+}
+
+.button:hover{
+	background-color: #4B5945; 
+}
+
+.addbtn{
+	background-color: transparent; 
+	padding: 10px 10px;
+	color: #5F8B4C;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 30px;
+	border: none;
+	text-align: center;
+	font-size: 30px;
+	cursor: pointer; 
+}
+
+.addbtn:hover{
+	background-color: #BFAD8D; 
+}
+
+body{
+	background-color: #F6F1DE;
+}
+
+h1{	
+	color: #27548A;
+	font-family: notes;
+	font-size: 160px;
+	text-align: center;
+	margin-bottom: 1px;
+}
+
+h2{
+	margin-top: 1px;
+	color: #183B4E;
+	font-size: 50px;
+	font-family: adelia;
+	text-align: center;
+	margin-bottom: 100px;
+
+}
+
+p{
+	color: #3C552D;
+	font-size: 30px;
+	font-family: lazys;
+	text-align: center;
+}
+
+small{
+        color: #27548A;
+	font-size: 30px;
+	font-family: notes;
+}
+
+.star{
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	background-color: transparent; 
+	color: #FADA5E;
+	font-family: draft;
+	text-decoration: none; 
+	border-radius: 30px;
+	text-align: center;
+	font-size: 30px;
+	border: none;
+	cursor: pointer; 
+	font-weight: bold;
+}
+
+.star:hover{
+	background-color: #FCF4A3;
+}
+
+.notif{
+display: inline-block;
+	margin-top:1px;
+margin-bottom:10px;
+	color: #27548A;
+	font-size: 50px;
+	font-family: draft;
+	text-align: center;
+}
+
+.title{
+display: inline-block;
+	margin-top:1px;
+margin-bottom:1px;
+	color: #49321c;
+	font-size: 30px;
+	font-family: draft;
+}
+
+.writing{
+display: inline-block;
+	margin-top:1px;
+margin-bottom:1px;
+	color: #90683b;
+	font-size: 30px;
+	font-family: lazys;
+}

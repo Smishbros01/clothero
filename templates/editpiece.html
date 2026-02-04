@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>
+		Clothero Closet Editor
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylespages.css') }}">
+</head>
+
+<main>
+	<h1>
+		Edit "{{piece}}" Pieces
+	</h1>
+
+					{% if items %}
+						<ul>
+							{% for pid, traits in items.items() %}
+								<li class="writing">
+
+ ID: {{pid}} | Color: {{traits[0]}} | Material: {{traits[1]}} | Professionalism: {{traits[2]}}
+									<li><form method="POST" action="/settings/edit/{{section}}/{{piece}}/{{pid}}"class="addform">
+		<input type="text" name="piecename" placeholder="Piece Name" class="addinp">
+		<input type="text" name="color" placeholder="Color" class="addinp">
+		<input type="text" name="material" placeholder="Material" class="addinp">
+		<input type="text" name="professionalism" placeholder="Professionalism" class="addinp">
+		<input type="text" name="image" placeholder="Image filename" class="addinp">
+		<button type="submit" class="addbtn" >
+			Edit
+		</button>
+	</form></li>
+								</li>
+								<img src="/static/clothes/{{traits[3]}}" width="400">
+							{% endfor %}
+						</ul>
+					{% else %}
+						<li class="writing">
+							All clothes are dirty! (Only clean clothes can be edited)
+						</li>
+
+					{% endif %}
+				
+
+
+	
+	<h2 class="notif">
+		Add images to /static/clothes and make sure to type the extension (.jpg, .png...)
+	</h2>
+
+	<p>
+		Go somewhere else	
+	</p>
+<div class="secrow">
+	<a href="/settings" class="button end">Settings</a>
+	<a href="/" class="button end">Home</a>
+</div>
+<div class="secrow">
+	<a href="/gen" class="button end">Generate Outfit </a>
+	<a href="/closet" class="button end">Closet</a>
+</div>
+<div class="secrow">
+	<a href="/laundry" class="button end">Laundry</a>
+	<a href="/search" class="button end">Search</a>
+</div>
+{% endblock %}

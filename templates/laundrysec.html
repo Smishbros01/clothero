@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>
+		Clothero Laundry
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylespages.css') }}">
+</head>
+
+<main>
+	<h1>
+		"{{section}}" Laundry Section
+	</h1>
+	{% if pieces %}
+		<ul>
+			{% for piece, items in pieces.items() %}
+				<li class="title">{{piece}}
+					<ul>
+						{% for pid, traits in items.items() %}
+							<li class="writing"> ID: {{pid}} | Color: {{traits[0]}} | Material: {{traits[1]}} | Professionalism: {{traits[2]}}
+								<form method="POST" action="/laundry/{{section}}/clean-piece/{{pid}}" style="display:inline;">
+									<button type="submit" class="clean">
+										Clean
+									</button>
+								</form>
+							</li>
+							<img src="/static/clothes/{{traits[3]}}" width="400">
+						{% endfor %}
+					</ul>
+				</li>
+			{% endfor %}
+		</ul>
+	<form method="POST" action="/laundry/{{section}}/clean-all" style="display:inline;">
+		<button type="submit" class="clean all">
+			Clean All
+		</button>
+	{% else %}
+		<h2>
+			No dirty items in this section yet.
+		</h2>
+	{% endif %}
+
+
+<h2 class="notif">
+					Clean your laundry by pressing "Clean" and it will be re-added to your pool of wearable clothes!
+				</h2>
+	</form>
+	<p>
+		Go somewhere else	
+	</p>
+<div class="secrow">
+	<a href="/laundry" class="button end">Laundry</a>
+	<a href="/" class="button end">Home</a>
+</div>
+<div class="secrow">
+	<a href="/gen" class="button end">Generate Outfit </a>
+	<a href="/closet" class="button end">Closet</a>
+</div>
+<div class="secrow">
+	<a href="/search" class="button end">Search</a>
+	<a href="/settings" class="button end">Settings</a>
+</div>
+</main>
+{% endblock %}

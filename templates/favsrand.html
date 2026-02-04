@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>
+		Clothero Generator
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylespages.css') }}">
+</head>
+
+<main>
+	<h1>
+		Favorites Outfit Generator
+	</h1>
+{% if sections %}
+	<h2>
+		What pieces do you want to have?
+	</h2>
+	<form method="GET" action="/gen/favorites/go">
+
+		<ul>
+			{% for section, pieces in sections.items() %}
+				<li class="title">{{section}}
+					<ul>
+						{% for piece, items in pieces.items() %}
+							<li class="writing">
+<label class="container">
+                 							<input type="checkbox" name="sec" value="{{section}}-{{piece}}"> 
+<span class="checkmark"></span>
+</label>              							{{piece}} ({{count[section][piece]}} available)
+
+               						</li>
+						{% endfor %}
+					</ul>
+               			</li>
+			{% endfor %}
+		</ul>
+		<button type="submit"  class="addbtn confirm all">Confirm</button>
+	</form>
+{% else %}
+<h2>
+		No Favorites!
+	</h2>
+{% endif %}
+	<p>
+		Go Somewhere Else
+	</p>
+
+<div class="secrow">
+	<a href="/gen" class="button end">Generate Outfit </a>
+	<a href="/" class="button end">Home</a>
+</div>
+<div class="secrow">
+	<a href="/closet" class="button end">Closet</a>
+	<a href="/laundry" class="button end">Laundry</a>
+</div>
+<div class="secrow">
+	<a href="/search" class="button end">Search</a>
+	<a href="/settings" class="button end">Settings</a>
+</div>
+</body>
+
+{% endblock %}

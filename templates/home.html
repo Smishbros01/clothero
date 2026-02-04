@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>
+		Clothero
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<main>
+	<h1>Clothero</h1>
+	<h2>Your Personal Stylist</h2>
+
+	{% if potd %}
+		<div class="secrow">
+			<p class="notif">Your Current Unique Piece! (resets on each login)</p>
+		</div>
+		{% if section %}
+			<div class="secrow"> 
+				<a href="/closet/{{section}}" class="addbtn">
+					<p class="title"> Section</p><p class="writing">: {{section}}</p>
+					<p class="title">Piece</p><p class="writing">: {{piece}}</p>
+				</a>
+			</div>
+			<div class="secrow">
+				{% if traits[4] %}
+					<form method="POST" action="/home/{{section}}/{{piece}}/unfavorite-piece/{{pid}}" style="display:inline;">
+						<button type="submit" class="star">★</button>
+					</form>
+				{% else %}
+					<form method="POST" action="/home/{{section}}/{{piece}}/favorite-piece/{{pid}}" style="display:inline;">
+						<button type="submit" class="star">☆</button>
+					</form>
+				{% endif %}
+				<p class="writing">ID: {{pid}} | Color: {{traits[0]}} | Material: {{traits[1]}} | Professionalism: {{traits[2]}}</p>
+			</div>
+			<div class="secrow">
+				<img src="/static/clothes/{{traits[3]}}" width="400">
+			</div>
+		{% else %}
+			<div class="secrow">
+				<p class="writing"> Add clothes to have a new unique piece next time you login!</p>
+			</div>
+		{% endif %}
+	{% endif %}
+	<p>What do you want to do?</p>
+	<div class="secrow">
+		<a href="/gen" class="button">Generate Outfit </a>
+	</div>
+	<div class="secrow">
+		<a href="/closet" class="button">Closet</a>
+		<a href="/laundry" class="button">Laundry</a>
+	</div>
+	<div class="secrow">
+		<a href="/search" class="button">Search</a>
+		<a href="/settings" class="button">Settings</a>
+	</div>
+</main>
+
+{% endblock %}

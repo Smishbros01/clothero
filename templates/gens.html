@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>Clothero Generator</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylespages.css') }}">
+</head>
+<body>
+	<h1>Generate An Outfit</h1>
+	<h2>Generation Style</h2>
+<div class="secrow">
+	<a href="/gen/random" class="button">Random</a>
+	<a href="/gen/color" class="button">Color</a>
+</div>
+<div class="secrow">
+	<a href="/gen/professionalism" class="button">Professionalism Rating</a>
+	<a href="/gen/material" class="button">Material</a>
+</div>
+
+<div class="secrow">
+	<a href="/gen/favorites" class="button favorites">Favorites</a>
+</div>
+	<p>Go Somewhere Else</p>
+
+<div class="secrow">
+	<a href="/" class="button end">Home</a>
+</div>
+<div class="secrow">
+	<a href="/closet" class="button end">Closet</a>
+	<a href="/laundry" class="button end">Laundry</a>
+</div>
+<div class="secrow">
+	<a href="/search" class="button end">Search</a>
+	<a href="/settings" class="button end">Settings</a>
+</div
+
+</body>
+
+{% endblock %}

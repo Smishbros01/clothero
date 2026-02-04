@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>
+		Clothero Closet Editor
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylespages.css') }}">
+</head>
+
+<main>
+	<h1>
+		Edit Your Closet Sections
+	</h1>
+	{% if sections %}
+		{% for section in sections %}
+			<div class="secrow">
+				<form method="GET" action="/settings/edit/{{section}}" class="addform">
+		<button type="submit" class="button">
+			{{section}}
+		</button>
+	</form>
+				<form method="POST" action="/settings/edit/{{section}}" class="addform">
+		<input type="text" name="section" placeholder=Change Section Name" class="addinp">
+		<button type="submit" class="addbtn">
+			Submit
+		</button>
+	</form>
+			</div>
+
+		{% endfor %}
+	{% else %}
+	<h2>
+		Your closet has no sections yet.
+	</h2>
+	{% endif %}
+	<p>
+		Go somewhere else
+	</p>
+<div class="secrow">
+	<a href="/settings" class="button end">Settings</a>
+	<a href="/" class="button end">Home</a>
+</div>
+<div class="secrow">
+	<a href="/gen" class="button end">Generate Outfit </a>
+	<a href="/closet" class="button end">Closet</a>
+</div>
+<div class="secrow">
+	<a href="/laundry" class="button end">Laundry</a>
+	<a href="/search" class="button end">Search</a>
+</div>
+</main>
+{% endblock %}

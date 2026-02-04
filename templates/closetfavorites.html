@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<head>
+	<title>
+		Clothero Closet
+	</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylespages.css') }}">
+</head>
+
+<main>
+	<h1>
+		"Favorites" Section
+	</h1>
+{% if sections %}
+<ul>
+			{% for section, pieces in sections.items() %}
+				<li class="title">Section - {{section}} <a href="/closet/{{section}}" class="hyp">← Go To </a>
+		<ul>
+			{% for piece, items in pieces.items() %}
+				<li class="title">
+{{piece}} 
+					{% if items %}
+						<ul>
+							{% for pid, traits in items.items() %}
+								<li class="writing">
+{% if traits[4] %}
+<form method="GET" action="/closet/{{section}}/unfavorite-piece/{{pid}}" style="display:inline;">
+										<button type="submit" class="star">
+											★
+										</button>
+									</form>
+
+{% endif %}
+ ID: {{pid}} | Color: {{traits[0]}} | Material: {{traits[1]}} | Professionalism: {{traits[2]}}
+								</li>
+								<img src="/static/clothes/{{traits[3]}}" width="400">
+							{% endfor %}
+						</ul>
+					{% else %}
+						<li class="writing">
+							All favorites are dirty!
+						</li>
+
+					{% endif %}
+				</li>
+			{% endfor %}
+		</ul>
+
+</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<h2>
+			No favorites yet.
+		</h2>
+	{% endif %}
+	<p>
+		Go somewhere else	
+	</p>
+<div class="secrow">
+	<a href="/closet" class="button end">Closet</a>
+	<a href="/" class="button end">Home</a>
+</div>
+<div class="secrow">
+	<a href="/gen" class="button end">Generate Outfit </a>
+	<a href="/laundry" class="button end">Laundry</a>
+</div>
+<div class="secrow">
+	<a href="/search" class="button end">Search</a>
+	<a href="/settings" class="button end">Settings</a>
+</div>
+{% endblock %}
